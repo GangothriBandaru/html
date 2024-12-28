@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <style>
+        :root {
+            --primary-color: #55aa58;
+            --secondary-color: #333;
+            --font-family: 'Arial, sans-serif';
+            --transition-speed: 0.3s;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            line-height: 1.6;
+            background: #f4f4f9;
+            color: var(--secondary-color);
+        }
+
+        header {
+            background: var(--primary-color);
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        nav {
+            background: #333;
+            color: #fff;
+            padding: 0.5rem;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            margin: 0 1rem;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            padding: 2rem;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card .content {
+            padding: 1.5rem;
+        }
+
+        .card .content h3 {
+            margin: 0 0 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .card .content p {
+            margin: 0 0 1rem;
+        }
+
+        .card .content a {
+            text-decoration: none;
+            color: #fff;
+            background: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background var(--transition-speed);
+        }
+
+        .card .content a:hover {
+            background: #388e3c;
+        }
+
+        iframe {
+            width: 100%;
+            border: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: var(--primary-color);
+            color: #fff;
+            margin-top: 2rem;
+        }
+
+        .contact-form {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-form h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .contact-form label {
+            display: block;
+            margin: 0.5rem 0 0.25rem;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .contact-form button {
+            background: var(--primary-color);
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background var(--transition-speed);
+        }
+
+        .contact-form button:hover {
+            background: #388e3c;
+        }
+
+        .about-section {
+            background: #e9f5e9;
+            padding: 2rem;
+            margin-top: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-section h2 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .about-section p {
+            line-height: 1.8;
+        }
+
+        .skills-section {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .skills-section h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skills-list div {
+            background: #e9f5e9;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-size: 1rem;
+            color: var(--secondary-color);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .certifications {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .certifications h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .certifications ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .certifications ul li {
+            margin-bottom: 0.5rem;
+            padding: 0.5rem;
+            background: #e9f5e9;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .blog-section {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .blog-section h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .blog-post {
+            margin-bottom: 1rem;
+        }
+
+        .blog-post h4 {
+            margin: 0.5rem 0;
+            color: var(--secondary-color);
+        }
+
+        .blog-post p {
+            margin: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Portfolio</h1>
+    </header>
+
+    <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#blog">Blog</a>
+    </nav>
+
+    <section class="about-section" id="about">
+        <h2>About Me</h2>
+        <p>Hello! I am a web developer with a passion for creating interactive and visually appealing web applications. I specialize in modern web technologies and enjoy bringing ideas to life in the browser.</p>
+    </section>
+
+    <section class="skills-section" id="skills">
+        <h3>My Skills</h3>
+        <div class="skills-list">
+            <div>HTML</div>
+            <div>CSS</div>
+            <div>JavaScript</div>
+            <div>React</div>
+            <div>Node.js</div>
+            <div>Python</div>
+        </div>
+    </section>
+
+    <main class="container" id="portfolio">
+        <div class="card">
+            <img src="https://via.placeholder.com/300" alt="Sample Image">
+            <div class="content">
+                <h3>Image Example</h3>
+                <p>This card displays an image as a portfolio item.</p>
+                <a href="#">View Details</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+            <div class="content">
+                <h3>Video Example</h3>
+                <p>This card embeds a YouTube video as a portfolio item.</p>
+                <a href="https://www.youtube.com" target="_blank">Watch on YouTube</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.835434509333!2d144.95592811531836!3d-37.81720997975195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf577cc6f095edafb!2sFederation+Square!5e0!3m2!1sen!2sau!4v1619169535275!5m2!1sen!2sau" allowfullscreen></iframe>
+            <div class="content">
+                <h3>Map Example</h3>
+                <p>This card embeds a Google Maps location as a portfolio item.</p>
+                <a href="https://maps.google.com" target="_blank">View on Maps</a>
+            </div>
+        </div>
+    </main>
+
+    <section class="certifications" id="certifications">
+        <h3>Certifications</h3>
+        <ul>
+            <li>Certified Web Developer - Codecademy</li>
+            <li>Advanced JavaScript - Udemy</li>
+            <li>React Professional Certification - Coursera</li>
+        </ul>
+    </section>
+
+    <section class="blog-section" id="blog">
+        <h3>Blog</h3>
+        <div class="blog-post">
+            <h4>Post 1: Exploring Modern Web Development</h4>
+            <p>Discover the latest trends and tools in web development for 2024.</p>
+        </div>
+        <div class="blog-post">
+            <h4>Post 2: Tips for Writing Clean Code</h4>
+            <p>Learn the best practices for maintaining clean and readable code.</p>
+        </div>
+        <div class="blog-post">
+            <h4>Post 3: Understanding CSS Grid</h4>
+            <p>A deep dive into one of the most powerful layout systems in CSS.</p>
+        </div>
+    </section>
+
+    <section class="contact-form" id="contact">
+        <h3>Contact Me</h3>
+        <form>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Your email" required>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Your message" required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>© 2024 My Portfolio. All rights reserved.</p>
+    </footer>
+</body>
+</html>
